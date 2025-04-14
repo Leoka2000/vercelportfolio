@@ -1,8 +1,9 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
-  swcMinify: true,
+  swcMinify: false, // D
   images: {
+    unoptimized: true, // Required for static exports
     domains: [
       "open.cruip.com",
       "ucarecdn.com",
@@ -17,9 +18,16 @@ const nextConfig = {
       test: /\.svg$/,
       use: ["@svgr/webpack"],
     });
+
+    // Add this to handle WASM files
+    config.experiments = {
+      asyncWebAssembly: true,
+      layers: true,
+    };
+
     return config;
   },
-  output: "export", // <-- This line is added for static export
+  output: "export",
 };
 
 module.exports = nextConfig;
