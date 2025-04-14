@@ -1,9 +1,7 @@
-import React from 'react'
+import React from "react";
 
 const Index = () => {
-  return (
-    <div>Still under development</div>
-  )
-}
+  return <div>Still under development</div>;
+};
 
-export default Index
+export default Index;
